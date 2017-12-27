@@ -1,5 +1,5 @@
 #!/bin/python3
-
+##Import libraries
 import sys
 
 ##Declare variables to count the fruits falling inside house
