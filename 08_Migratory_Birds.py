@@ -16,6 +16,8 @@ def migratoryBirds(n, ar):
             if current_streak > previous_streak:
                 previous_streak = current_streak
                 type_of_maximum = ar[i]
+        else:
+            current_streak = 1
     return(type_of_maximum)
 
 n = int(input().strip())
