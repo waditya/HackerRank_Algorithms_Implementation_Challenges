@@ -9,21 +9,31 @@ def climbingLeaderboard(scores, alice):
     scores_uniq = scores
     scores_uniq = list(set(scores))
     scores_uniq.sort(key = None, reverse = True)
-    ##print(scores_uniq)   ##Debug_Checkpoint - 01
     
-    array_for_rankings = []
+    ##print("length of sorted scores")
+    ##print(len(scores_uniq))
+    
+    lower_bound = len(scores_uniq) - 1
+    upper_bound = -1
+    delta = -1
+    
+    ranking_for_each_round = []
     
     for i in range(0, len(alice), 1):
-        for j in range(0, len(scores_uniq), 1):
-            ##print(alice[i] , scores_uniq[j])  ##Debug_Checkpoint - 02
-            if alice[i] >= scores_uniq[j]:
-                array_for_rankings.append(j + 1)
+        #print(alice[i], lower_bound, upper_bound)
+        for j in range(lower_bound, upper_bound , delta):
+            if alice[i] < scores_uniq[j]:
+                rank = j + 1
+                ranking_for_each_round.append(rank + 1)
+                lower_bound = rank - 1
                 break
-        if alice[i] < scores_uniq[-1]:
-                ##print("Alice has the least score")    ##Debug_Checkpoint - 03
-                array_for_rankings.append(len(scores_uniq) + 1)
-        ##print(array_for_rankings) ##Debug_Checkpoint - 04
-    return(array_for_rankings)
+            elif alice[i] >= scores_uniq[0] and j == 0:
+                    #print("Score is larger than the highest score")
+                    ranking_for_each_round.append(1)
+                    break   
+        ##print(ranking_for_each_round[-1])
+    return(ranking_for_each_round)
+                
 
 if __name__ == "__main__":
     n = int(input().strip())
@@ -32,6 +42,3 @@ if __name__ == "__main__":
     alice = list(map(int, input().strip().split(' ')))
     result = climbingLeaderboard(scores, alice)
     print ("\n".join(map(str, result)))
-
-
-
