@@ -8,11 +8,10 @@ def countingValleys(n, s):
     no_of_valleys = 0
     for i in range(0, len(s), 1):
         if s[i]== 'D':
-            if counter < 3:
-                counter = counter + 1
+            counter = counter - 1
         else:
-            counter = 0
-        if counter == 2:
+            counter = counter + 1
+        if counter == 0 and s[i] == 'U':
             no_of_valleys = no_of_valleys + 1
     return(no_of_valleys)
 
