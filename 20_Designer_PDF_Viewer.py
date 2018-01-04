@@ -16,6 +16,7 @@ def designerPdfViewer(h, word):
     for index in range(0, width_of_the_word, 1):
         if h[ord(word[index]) - 97] > maximum_height_of_word:
             maximum_height_of_word = h[ord(word[index]) - 97]
+    ##The time complexity is O[N]. Space complexity is O[N]
             
     ##Calculate the area of the highlighted word
     
