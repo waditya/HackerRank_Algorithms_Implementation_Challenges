@@ -3,19 +3,13 @@
 import sys
 
 def saveThePrisoner(n, m, s):
-    remainder = m % n
-    if m > n:    
-        poisoned_person_number = (remainder + (s - 1))% n
-        while  poisoned_person_number > n:
-            poisoned_person_number = poisoned_person_number%n 
-    elif m == n:
-        poisoned_person_number = (s - 1) + int((m - s + 1)/m)
+    if s + m < n:
+        return(s + m - 1)
     else:
-        if s + m > n:
-            poisoned_person_number = (n - s + 1)
+        if (s+m - 1) % n == 0:
+            return(n)
         else:
-            poisoned_person_number = (s + m -1)
-    return(poisoned_person_number)
+            return((s+m - 1) % n)
 
 t = int(input().strip())
 for a0 in range(t):
