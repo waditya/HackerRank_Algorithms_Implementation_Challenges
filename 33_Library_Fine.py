@@ -3,20 +3,15 @@
 import sys
 
 def libraryFine(d1, m1, y1, d2, m2, y2):
-    ##print(d1)
-    ##print(m1)
-    ##print(y1)
-    ##print(d2)
-    ##print(m2)
-    ##print(y2)
+    
     fine = 0
     
     if(y1 > y2):
         fine = 10000
-    else:
+    elif y1 == y2:
         if m1 > m2:
             fine = 500 * (m1 - m2)
-        else:
+        elif m1 == m2:
             if d1 > d2:
                 fine = 15 * (d1 - d2)
     return(fine)
@@ -29,4 +24,3 @@ if __name__ == "__main__":
     d2, m2, y2 = [int(d2), int(m2), int(y2)]
     result = libraryFine(d1, m1, y1, d2, m2, y2)
     print(result)
-
