@@ -1,5 +1,6 @@
 #!/bin/python3
 ##Import libraries
+##Author - Aditya Wagholikar
 import sys
 import math 
 def solve(grades):
