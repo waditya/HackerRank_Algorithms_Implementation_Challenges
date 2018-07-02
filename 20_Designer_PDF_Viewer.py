@@ -5,7 +5,7 @@ import sys
 def designerPdfViewer(h, word):
     #Calculate the ASCII value of character in the word. For [a - z], the ASCII value is [97 - 122]. Subtract 97 from the obtained         ##value and substitute it as the index of array h stating height of each character alphabetically.
     
-    ##Calculate the width of the word
+    ##Calculate the width of the word.
     
     width_of_the_word = len(word)
     width_of_a_character = 1
