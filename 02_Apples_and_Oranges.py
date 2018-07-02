@@ -2,7 +2,7 @@
 ##Import libraries
 import sys
 
-##Declare variables to count the fruits falling inside house
+##Declare variables to count the fruits falling inside house.
 
 no_of_apples_in_house = 0
 no_of_oranges_in_house = 0
