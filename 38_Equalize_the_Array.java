@@ -8,7 +8,7 @@ import java.util.regex.*;
 
 public class Solution {
 
-    // Complete the equalizeArray function below.
+    // Complete the equalizeArray function below...
     static int equalizeArray(int[] arr) {
     int[] number = new int [arr.length];
     int max_occurence_counter = 0;
