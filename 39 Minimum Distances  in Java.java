@@ -1,3 +1,5 @@
+/*Written By - Aditya Wagholikar
+Determine minimum distance between repeating elements in an array*/
 import java.io.*;
 import java.math.*;
 import java.security.*;
