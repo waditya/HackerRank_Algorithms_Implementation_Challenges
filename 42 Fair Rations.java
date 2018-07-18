@@ -20,11 +20,7 @@ public class Solution {
                 B[i+1]+=1;
                 number_of_loafs = number_of_loafs+2;
             }
-            if(B[no_of_subjects -1 ]%2 == 1){
-                System.out.println("NO");
-                number_of_loafs = 0;
-                break;
-            }
+            
         }
         return(B[no_of_subjects -1 ]%2 == 1?"NO": Integer.toString(number_of_loafs));
     }
