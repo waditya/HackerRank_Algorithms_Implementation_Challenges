@@ -1,4 +1,3 @@
-/*Taum and Birthday*/
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -10,10 +9,19 @@ import java.util.regex.*;
 public class Solution {
 
     // Complete the taumBday function below.
-    static int taumBday(int b, int w, int bc, int wc, int z) {
-        return(b*bc+w*wc > (bc > wc? (w+b)*wc + z*b : (b+w)*bc + z*w)?(bc > wc? (w+b)*wc + z*b : (b+w)*bc + z*w):b*bc+w*wc);
-
-    }
+    static long taumBday(int b, int w, int bc, int wc, int z) {
+    long bl=(long) b; //Number of black gifts in long data type.
+    long wl=(long) w; //Number of white gifts in long data type.
+    long bcl=(long) bc; //Cost of black gift in long data type.
+    long wcl=(long) wc; //Cost of white gift in long data type.
+    long zl=(long) z;  //Cost of exchange in long data type.
+    
+    long mwc = wcl <= bcl+zl?wcl:bcl+zl; //mimimum cost of white gift after taking into account exchange cost with lower black gift price in long data type.
+        
+    long mbc = bcl <= wcl+zl?bcl:wcl+zl;//mimimum cost of black gift after taking into account exchange cost with lower white gift price in long data type.
+    //Simple multiplication.
+    return(mwc * wl + mbc*bl);
+}
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -38,7 +46,7 @@ public class Solution {
 
             int z = Integer.parseInt(bcWcz[2]);
 
-            int result = taumBday(b, w, bc, wc, z);
+            long result = taumBday(b, w, bc, wc, z);
 
             bufferedWriter.write(String.valueOf(result));
             bufferedWriter.newLine();
@@ -49,4 +57,3 @@ public class Solution {
         scanner.close();
     }
 }
-
