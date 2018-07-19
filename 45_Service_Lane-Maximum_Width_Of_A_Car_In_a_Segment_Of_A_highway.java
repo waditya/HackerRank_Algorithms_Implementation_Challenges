@@ -17,6 +17,8 @@ public class Solution {
         int cases_arr_size = cases.length;
         int[] minimum_width_arr = new int[cases_arr_size];
         int minimum = 0;
+        int val1;
+        int val2;
         
         HashSet<Integer> setOfOnes = new HashSet<Integer>();
         HashSet<Integer> setOfTwos = new HashSet<Integer>();
@@ -37,30 +39,35 @@ public class Solution {
         
         //Retrieve the Values from Hashset
         for(int j=0; j < cases_arr_size; j++){
-            System.out.println("Test Case # "+j);
-            if(setOfOnes.contains(cases[j][0]) || setOfOnes.contains(cases[j][1])){
-                minimum_width_arr[j] = 1;
-                minimum=1; 
-                System.out.println("Border cases contains One");
-            } else{
-                int counter = 1; 
-                for(int k=cases[j][0];k <= cases[j][1];k++){
-                    System.out.println("Range is "+cases[j][0]+" to "+cases[j][1]);
-                    System.out.println("Counter is : "+counter++);
-                    if(setOfOnes.contains(k)){
-                        minimum = 1;
-                        System.out.println("Minimum Width is 1 for Case "+j);
-                        break;       
-                    }else if(setOfTwos.contains(k)){
-                        minimum = (minimum <= 2 && minimum!=0)?minimum:2;
-                    }else{
-                        minimum = (minimum <= 3 && minimum!=0)?minimum:3;
-                    }
+            Iterator it1 = setOfOnes.iterator();
+            Iterator it2 = setOfTwos.iterator();
+            //System.out.println(it1.next().getClass()); 
+            while(it1.hasNext()){
+                val1 = (int)it1.next(); 
+                
+                if(val1 >= cases[j][0] && val1 <= cases[j][1]){
+                    minimum = 1;
+                    break; 
                 }
-            }            
+            }
+            
+            if(minimum == 0){
+                while(it2.hasNext()){
+                    val2 = (int)it2.next();
+                    if(val2 >= cases[j][0] && val2 <= cases[j][1]){
+                        minimum = 2;
+                        break; 
+                    }   
+                }
+            }
+            
+            if(minimum == 0){
+                minimum = 3; 
+            }
             minimum_width_arr[j] = minimum;
-            minimum = 0;
-        }
+            minimum =0;
+        }    
+            
      return(minimum_width_arr);    
 
     }
