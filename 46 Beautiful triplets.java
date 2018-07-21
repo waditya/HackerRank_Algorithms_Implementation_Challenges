@@ -1,5 +1,5 @@
 /*Beautiful Triplets - Implementation in Java
-Author - Aditya Wagholikar*/
+Author - Aditya Wagholikar.*/
 
 import java.io.*;
 import java.math.*;
