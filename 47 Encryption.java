@@ -27,21 +27,16 @@ public class Solution {
         
          
         
-        for(int i =0; i<col;i++){
-            char [] word= new char[row + 1];  
-            for(int j=0; j<row; j++){
+        for(int i =0; i<col;i++){  
+            for(int j=0; j<=row; j++){
                 temp = i + j * col;                
                 if(temp < size_of_str){
                     System.out.println("i : "+i+", j : "+j+", i + j * col : "+(i + j * col));
-                    System.out.println("Inside temp loop : "+string_arr[i + j * col]);
-                    //word[i] = string_arr[i + j * col];   
-                    sentence.append(string_arr[i + j * col]);
-                } 
-            }
-            //word[i] = " ".toCharArray()[0]; 
+                    System.out.println("Inside temp loop : "+string_arr[i + j * col]);                                 sentence.append(string_arr[i + j * col]);
+                }
+                temp =0;
+            }            
             sentence.append(" ".toCharArray()[0]);
-            //sentence.append();
-            //System.out.println("The word is : "+(String)word.toString());
             if(temp >size_of_str){
                 break; 
             }
@@ -64,6 +59,6 @@ public class Solution {
 
         bufferedWriter.close();
 
-        scanner.close();//clu hlt io
+        scanner.close();
     }
 }
