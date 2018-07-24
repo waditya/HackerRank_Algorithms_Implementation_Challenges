@@ -1,6 +1,3 @@
-/*Encryption -- Using Java
-Written By - Aditya Wagholikar*/
-
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -17,20 +14,37 @@ public class Solution {
         int size_of_str = s2.length();
         
         int row = (int)Math.floor(Math.sqrt(size_of_str));
-        int col = (int)Math.round(Math.sqrt(size_of_str));  
+        int col = (int)Math.ceil(Math.sqrt(size_of_str));
+        
+        int temp = 0;
+        
+        System.out.println("Lower and Upper Bound : "+row+", "+col);
+        System.out.println("Size of unspaced string "+s2+" is : "+size_of_str);
         
         char[] string_arr = s2.toCharArray();
         
         StringBuilder sentence = new StringBuilder();
         
-        char [] word= new char[row + 1];   
+         
         
         for(int i =0; i<col;i++){
+            char [] word= new char[row + 1];  
             for(int j=0; j<row; j++){
-                word[i] = string_arr[i + j * col];
+                temp = i + j * col;                
+                if(temp < size_of_str){
+                    System.out.println("i : "+i+", j : "+j+", i + j * col : "+(i + j * col));
+                    System.out.println("Inside temp loop : "+string_arr[i + j * col]);
+                    //word[i] = string_arr[i + j * col];   
+                    sentence.append(string_arr[i + j * col]);
+                } 
             }
-            word[i + 1] = " ".toCharArray()[0]; 
-            sentence.append((String)word.toString()); 
+            //word[i] = " ".toCharArray()[0]; 
+            sentence.append(" ".toCharArray()[0]);
+            //sentence.append();
+            //System.out.println("The word is : "+(String)word.toString());
+            if(temp >size_of_str){
+                break; 
+            }
         }
         System.out.println("The string is : "+(String)sentence.toString());
         return((String)sentence.toString()); 
@@ -50,7 +64,6 @@ public class Solution {
 
         bufferedWriter.close();
 
-        scanner.close();
+        scanner.close();//clu hlt io
     }
 }
-
