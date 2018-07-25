@@ -1,4 +1,5 @@
-/*Hallowen Sale Problem*/
+/*Hallowen Sale Problem
+Written  By - */
 import java.io.*;
 import java.math.*;
 import java.security.*;
