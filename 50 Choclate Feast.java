@@ -21,9 +21,7 @@ public class Solution {
         while(flag){
             if(money_with_bob == n){                
                 no_of_choclates = money_with_bob/c;
-                //cost = no_of_choclates * c;
                 no_of_wrappers = no_of_choclates;
-                //money_with_bob-= cost;
                 money_with_bob = (no_of_wrappers * c )/m;
             }else{
                 
