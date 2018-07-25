@@ -1,4 +1,5 @@
-/*Encrypt a String*/
+/*Encrypt a String
+Written By - Aditya Wagholikar*/
 import java.io.*;
 import java.math.*;
 import java.security.*;
