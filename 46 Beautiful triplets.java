@@ -20,15 +20,15 @@ public class Solution {
         
         //Create a hashmap with K-V pair -- array value and its index respectively
         
-        for(int index = 0; index < size_of_arr - 1; index++){
+        for(int index = 0; index < size_of_arr; index++){
             arr_map.put(arr[index], index);
         }
         //Check for beautiful triplets
         
         for(int index = 0; index < size_of_arr; index++){
             if(arr_map.containsKey(arr[index])){
-                int element1 = arr_map.get(arr[index]);
-                
+                //int element1 = arr_map.get(arr[index]);
+                int element1 = arr[index];
                 //Calculate the next 2 progressions  
             
                 int element2 = element1 + d;
@@ -36,7 +36,7 @@ public class Solution {
                 int flag = -1;
             
             //Check if the hashmap contains these two progressive elements
-            
+            System.out.println("Checking : "+element1+", "+element2+", "+element3+" ...");
             if(arr_map.containsKey(element2) && arr_map.containsKey(element3)){
                 //Proceed to check if their index follow the given rules for beautiful triplets
                 
@@ -50,7 +50,7 @@ public class Solution {
                 flag = -1;
                 arr_map.remove(element1);
                 if(!(arr_map.containsKey(element3+d))){
-                    System.out.println("Inside the check.."+element3+", "+(element3+d)+", "+arr_map.containsKey(element3+d));
+                    System.out.println("Inside the check.."+element3+", "+(element3+d)+", "+arr_map.containsKey(element3+d)+" Total count: "+triplet_counter);
                     arr_map.remove(element1);
                     arr_map.remove(element2);
                     arr_map.remove(element3); 
@@ -93,5 +93,3 @@ public class Solution {
         scanner.close();
     }
 }
-
-
