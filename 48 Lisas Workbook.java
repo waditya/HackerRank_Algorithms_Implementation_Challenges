@@ -11,34 +11,37 @@ import java.util.regex.*;
 public class Solution {
 
     // Complete the workbook function below.
+    
     static int workbook(int n, int k, int[] arr) {
     boolean flag = true;
     int current_page_no = 1;
     int no_of_chapters = arr.length;
     int index = 0;
     int beginning = 1;
-    int end = 3;
+    int end = k;
     int no_special_page = 0;
     int no_of_problems_in_chapter=0; 
     while(flag){
     no_of_problems_in_chapter = arr[index];
     if (current_page_no >=beginning && current_page_no <= end){
-        System.out.println("Current Page : "+current_page_no+" , Chapter # "+(index+1)+" ,Problem Number Range : "+beginning+" to "+end);
+        //System.out.println("Current Page : "+current_page_no+" , Chapter # "+(index+1)+" ,Problem Number Range : "+beginning+" to "+end);
         no_special_page++;    
     }
+    //System.out.println("*** General : Current Page : "+current_page_no+" , Chapter # "+(index+1)+" ,Problem Number Range : "+beginning+" to "+end);
      current_page_no++;     
-    if ((beginning + 3) > no_of_problems_in_chapter){
+    if ((beginning + k) > no_of_problems_in_chapter){
         index++;
         if(index >= no_of_chapters){
+            //System.out.println("We are at break point, index : "+index+" , No of chapters : "+no_of_chapters);
             break;
         }
         beginning = 1;
-        end = arr[index] <3? arr[index]:3;
+        end = arr[index] <k? arr[index]:k;
     }else{
-        beginning+=3;
-        end = end + 3 > no_of_problems_in_chapter?no_of_problems_in_chapter:end+3;
+        beginning+=k;
+        end = end + k > no_of_problems_in_chapter?no_of_problems_in_chapter:end+k;
     }
-    flag = index==no_of_chapters? false:true; 
+    //flag = index==no_of_chapters? false:true; 
     }    
     return(no_special_page);
     }
@@ -74,4 +77,3 @@ public class Solution {
         scanner.close();
     }
 }
-
