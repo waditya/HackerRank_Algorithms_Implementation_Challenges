@@ -17,25 +17,44 @@ public class Solution {
     int no_of_space_stations = c.length;
     int current_station = 0;
     int min = -1;
-    int prev;
+    int temp;
         
     HashMap<Integer, Integer> map = new HashMap<>();
     
     if(no_of_space_stations == n){
         return(0); 
-    }
-    
-    for(int city=0; city<n; city++){        
-        for(int spacestation =current_station; spacestation < no_of_space_stations; spacestation++){
-            prev = Math.abs(city - c[spacestation]) < min_dist && min_dist!=-1 ? Math.abs(city - c[spacestation]) : min_dist==-1?Math.abs(city - c[spacestation]): min_dist;           
-            min_dist = Math.abs(city - c[spacestation]) < min_dist && min_dist!=-1 ? Math.abs(city - c[spacestation]) : min_dist==-1?Math.abs(city - c[spacestation]): min_dist;
-            System.out.println("Min. Dist for : "+city+" is : "+min_dist+", Max. Dist :"+max_of_min_distance+", Calculated Min. Dist : "+Math.abs(city - c[spacestation]));
+    }else if(n - no_of_space_stations ==1){
+        return(1);
+    }else{
+        for(int city=current_station; city < n; city++){ 
+            for(int station_city_index=current_station;station_city_index < no_of_space_stations; station_city_index++){                
+                if(min == -1){
+                    temp = Math.abs(city - c[station_city_index]);
+                    min = temp; 
+                }else{
+                    temp = Math.abs(city - c[station_city_index]);
+                    min = temp < min?temp:min;                    
+                }
+                if(temp > min){
+                    //current_station = station_city_index;
+                    System.out.println("Inside Loop : "+"Temp :"+temp+", min "+min);
+                    System.out.println("City: "+city+", Station City Index : "+station_city_index+", min: "+min+", temp: "+temp+", Max. of Min. dist: "+max_of_min_distance);
+                    min =-1;
+                    temp=-1;
+                    break;
+                }                 
+                System.out.println("City: "+city+", Station City Index : "+station_city_index+", min: "+min+", temp: "+temp+", Max. of Min. dist: "+max_of_min_distance);
             }
-        max_of_min_distance = max_of_min_distance>min_dist?max_of_min_distance: min_dist;
-        } 
-        System.out.println("Maximum Distance : "+max_of_min_distance);
+            max_of_min_distance = max_of_min_distance < min?min:max_of_min_distance;
+            temp = -1;
+            min = -1;
+            
+                    //current_station = station_city_index;
+        }
         return(max_of_min_distance);
-    }
+    } 
+}
+    
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -68,4 +87,3 @@ public class Solution {
         scanner.close();
     }
 }
-
