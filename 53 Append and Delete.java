@@ -20,7 +20,14 @@ public class Solution {
         char[] sarr  =s.toCharArray();
         char[] tarr = t.toCharArray();
         
+        int diff_of_length = Math.abs(slength - tlength);
+        
+        int shorter_length = slength < tlength?slength:tlength;
+        int longer_length = slength > tlength? slength:tlength; 
+        
         int diff_index = -1;
+        boolean diff_flag = false;
+        String status = "Yes";
         
         
         if(Math.abs(slength - tlength) > k){
@@ -30,13 +37,30 @@ public class Solution {
                 System.out.println("s : "+sarr[i]+", t : "+tarr[i]);
                 if(sarr[i] != tarr[i]){
                     diff_index = i;
-                    System.out.println(" ** Difference!! ** at common index "+ diff_index);                 
+                    System.out.println(" ** Difference!! ** at common index "+ diff_index);
+                    diff_flag = true; 
                     break;
                 }
             }
+            if(diff_flag){
+                if(slength == tlength){
+                    System.out.println("Insude Equality Loop");
+                    status = (slength - diff_index + 1) * 2 <= k && k%2==0?"Yes":"No";   
+                }else{
+                    if(shorter_length - 1 >= diff_index){
+                    status = (shorter_length - 1 - diff_index + diff_of_length)*2 <= k?"Yes":"No";
+                }
+                }
+                
+            }/*else{
+                if(k > diff_of_length && diff_of_length!=0){
+                    status = k - diff_of_length%2==0?"Yes":"No";
+                }
+                
+            }*/
         }
 
-    return("Yes");
+    return(status);
     }
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -61,4 +85,3 @@ public class Solution {
         scanner.close();
     }
 }
-
