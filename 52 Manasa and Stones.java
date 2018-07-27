@@ -26,6 +26,7 @@ public class Solution {
         }
     }
         Long[] arr = set.toArray(new Long[set.size()]);
+        //Sort the Array
         Arrays.sort(arr);
     return(arr);
     }
