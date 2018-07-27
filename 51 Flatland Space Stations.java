@@ -12,49 +12,21 @@ public class Solution {
 
     // Complete the flatlandSpaceStations function below.
     static int flatlandSpaceStations(int n, int[] c) {
-    int max_of_min_distance=-1;
-    int min_dist=-1;
-    int no_of_space_stations = c.length;
-    int current_station = 0;
-    int min = -1;
-    int temp;
+    int diff = 0;
+    Arrays.sort(c);
         
-    HashMap<Integer, Integer> map = new HashMap<>();
-    
-    if(no_of_space_stations == n){
-        return(0); 
-    }else if(n - no_of_space_stations ==1){
-        return(1);
-    }else{
-        for(int city=current_station; city < n; city++){ 
-            for(int station_city_index=current_station;station_city_index < no_of_space_stations; station_city_index++){                
-                if(min == -1){
-                    temp = Math.abs(city - c[station_city_index]);
-                    min = temp; 
-                }else{
-                    temp = Math.abs(city - c[station_city_index]);
-                    min = temp < min?temp:min;                    
+    for(int i = 0; i < c.length - 1; i++){
+    diff = Math.abs(c[i] - c[i+1]) > diff? Math.abs(c[i] - c[i+1]) : diff;
+    System.out.println("Difference : "+diff);
+  }
+    if(c[0] == 0){
+        return(diff - 2 < 0 ?diff - 1:diff -2);
                 }
-                if(temp > min){
-                    //current_station = station_city_index;
-                    System.out.println("Inside Loop : "+"Temp :"+temp+", min "+min);
-                    System.out.println("City: "+city+", Station City Index : "+station_city_index+", min: "+min+", temp: "+temp+", Max. of Min. dist: "+max_of_min_distance);
-                    min =-1;
-                    temp=-1;
-                    break;
-                }                 
-                System.out.println("City: "+city+", Station City Index : "+station_city_index+", min: "+min+", temp: "+temp+", Max. of Min. dist: "+max_of_min_distance);
-            }
-            max_of_min_distance = max_of_min_distance < min?min:max_of_min_distance;
-            temp = -1;
-            min = -1;
-            
-                    //current_station = station_city_index;
-        }
-        return(max_of_min_distance);
-    } 
-}
-    
+    if(c[c.length-1] !=n){ 
+        return(n - c[c.length - 1] >diff?n - c[c.length - 1]-1:diff/2); 
+    }
+    return(diff -1 <0?0:diff/2);
+    }
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -87,3 +59,4 @@ public class Solution {
         scanner.close();
     }
 }
+
