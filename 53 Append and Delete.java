@@ -14,53 +14,36 @@ public class Solution {
 
     // Complete the appendAndDelete function below.
     static String appendAndDelete(String s, String t, int k) {
-        int slength = s.length();
-        int tlength = t.length();
-        
-        char[] sarr  =s.toCharArray();
-        char[] tarr = t.toCharArray();
-        
-        int diff_of_length = Math.abs(slength - tlength);
-        
-        int shorter_length = slength < tlength?slength:tlength;
-        int longer_length = slength > tlength? slength:tlength; 
-        
-        int diff_index = -1;
-        boolean diff_flag = false;
+        int commonLength = 0;
         String status = "Yes";
         
-        
-        if(Math.abs(slength - tlength) > k){
-            return("No"); 
-        }else{
-            for(int i =0; i < Math.min(slength, tlength); i++){
-                System.out.println("s : "+sarr[i]+", t : "+tarr[i]);
-                if(sarr[i] != tarr[i]){
-                    diff_index = i;
-                    System.out.println(" ** Difference!! ** at common index "+ diff_index);
-                    diff_flag = true; 
-                    break;
-                }
-            }
-            if(diff_flag){
-                if(slength == tlength){
-                    System.out.println("Insude Equality Loop");
-                    status = (slength - diff_index + 1) * 2 <= k && k%2==0?"Yes":"No";   
-                }else{
-                    if(shorter_length - 1 >= diff_index){
-                    status = (shorter_length - 1 - diff_index + diff_of_length)*2 <= k?"Yes":"No";
-                }
-                }
-                
-            }/*else{
-                if(k > diff_of_length && diff_of_length!=0){
-                    status = k - diff_of_length%2==0?"Yes":"No";
-                }
-                
-            }*/
+        for (int i=0; i<java.lang.Math.min(s.length(),t.length());i++){
+            if (s.charAt(i)==t.charAt(i))
+                commonLength++;
+            else
+                break;
         }
-
-    return(status);
+//CASE A
+        if((s.length()+t.length()-2*commonLength)>k){
+            System.out.println("No");
+            status ="No";
+        }
+//CASE B
+        else if((s.length()+t.length()-2*commonLength)%2==k%2){
+            System.out.println("Yes");
+            status = "Yes";
+        }
+//CASE C
+        else if((s.length()+t.length()-k)<0){
+            System.out.println("Yes");
+            status = "Yes";
+        }
+//CASE D
+        else{
+            System.out.println("No");
+            status ="No";
+        }
+        return(status);
     }
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -85,3 +68,4 @@ public class Solution {
         scanner.close();
     }
 }
+
