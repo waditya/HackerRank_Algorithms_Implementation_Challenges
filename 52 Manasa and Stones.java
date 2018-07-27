@@ -1,4 +1,5 @@
-/*manasa and Stones*/
+/*manasa and Stones
+Written By - Aditya Wagholikar*/
 
 import java.io.*;
 import java.math.*;
