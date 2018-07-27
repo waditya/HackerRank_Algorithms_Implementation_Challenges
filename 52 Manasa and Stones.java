@@ -19,7 +19,7 @@ public class Solution {
     Long al = new Long(a);
     Long bl = new Long(b); 
     Long temp = new Long(0);
-    //Long i = new Long(0);
+    
     for(Long i = new Long(1); i <= nl; i++){
         temp = al * ( nl - i ) + bl * (i - 1);
         if(!set.contains(temp)){
