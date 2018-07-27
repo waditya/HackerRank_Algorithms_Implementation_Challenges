@@ -14,6 +14,7 @@ public class Solution {
     // Complete the stones function below.
     static Long[] stones(int n, int a, int b) {
     HashSet<Long> set = new HashSet<Long>();
+    //Convert all integer argumenst to Long 
     Long nl = new Long(n);
     Long al = new Long(a);
     Long bl = new Long(b); 
