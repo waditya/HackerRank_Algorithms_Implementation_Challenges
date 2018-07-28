@@ -1,4 +1,5 @@
-/*Strange Counter*/
+/*Strange Counter
+Written By - Aditya Wagholikar*/
 import java.io.*;
 import java.math.*;
 import java.security.*;
