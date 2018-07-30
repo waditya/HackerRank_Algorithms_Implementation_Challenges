@@ -1,5 +1,5 @@
 /*Append and Delete
-Written by - Aditya Wagholikar*/
+.. Written by - Aditya Wagholikar .. */
 
 
 import java.io.*;
